@@ -8,9 +8,12 @@ categories = ["IT"]
 tags = ["Hugo"]
 +++
 
-> 本文为`Shizukiの魔法小屋`搭建记录，仅供参考，不宜完全照搬，请根据需求自行调整。
+> 图片：[×××をみて](https://www.pixiv.net/artworks/132004491)  
+> 画师：[Noah](https://www.pixiv.net/users/87145717)
 
 ## 前言
+> 本文为`Shizukiの魔法小屋`搭建记录，仅供参考，不宜完全照搬，请根据需求自行调整。
+
 在去年 3 月，我是搭建过一次博客的，用 Wordpress + Sakurairo 搭建（Sakurairo 真好看吧）。
 不过最后毁于忘记续费，虽说也没写什么有用的东西，不过倒也积攒了经验。
 
@@ -469,6 +472,93 @@ article:
     }
   }
 }
+```
+
+#### 友链页面
+创建友链页面 `themes/Stack/layouts/page/friends.html`
+
+```html
+{{ define "body-class" }}article-page keep-sidebar{{ end }}
+{{ define "main" }}
+
+<section class="article-content">
+    <h1> {{ T "friends.title" }} </h1>
+</section>
+
+<div class="article-list--compact links">
+    {{ $siteResources := resources }}
+    {{ range $i, $link :=  $.Site.Data.friends }}
+    <article>
+        <a href="{{ $link.website }}" target="_blank" rel="noopener">
+            <div class="article-details">
+                <h2 class="article-title">
+                    {{- $link.title -}}
+                </h2>
+
+                {{ with $link.description }}
+                <footer class="article-time">
+                    {{ . }}
+                </footer>
+                {{ end }}
+                {{ with $link.notes }}
+                <footer class="article-link">
+                    {{ . }}
+                </footer>
+                {{ end }}
+            </div>
+
+            {{ with $link.image }}
+            <div class="article-image">
+                <img src="{{ . }}" loading="lazy">
+            </div>
+            {{ end }}
+        </a>
+    </article>
+    {{ end }}
+</div>
+
+{{ partial "article/article.html" . }}
+
+{{ if not (eq .Params.comments false) }}
+{{ partial "comments/include" . }}
+{{ end }}
+
+{{ partialCached "footer/footer" . }}
+
+{{ end }}
+```
+
+添加至 `custom.scss`
+
+```scss
+@media (min-width: 1024px) {
+  .article-list--compact.links {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: none;
+    box-shadow: none;
+    gap: 1rem;
+
+    article {
+      background: var(--card-background);
+      border: none;
+      box-shadow: var(--shadow-l2);
+      margin-bottom: 8px;
+      border-radius: var(--card-border-radius);
+
+      &:nth-child(odd) {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+```
+
+添加 i18n
+
+```yaml
+friends:
+    title: 朋友们
 ```
 
 #### 其他杂碎
