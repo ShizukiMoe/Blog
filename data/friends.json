@@ -11,5 +11,12 @@
     "website": "https://moran-neko.moe/",
     "image": "https://moran-neko.moe/img/mortis.png",
     "description": "一个野生的互联网存档点"
+  },
+
+  {
+    "title": "DDverse",
+    "website": "https://blog.wemoez.com/",
+    "image": "https://blog.wemoez.com/img/avatar_hu_4641e1f24e8888ed.png",
+    "description": "Live a life of serenity, not a life of regrets."
   }
 ]
