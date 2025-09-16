@@ -1,8 +1,8 @@
 +++
-title = '使用 Hugo + Stack 重新搭建博客'
-slug = "rebuild-blog"
+title = '使用 Hugo + Stack 搭建博客'
+slug = "build-blog"
 date = '2025-08-12T00:00:00+08:00'
-image = "post/2025/08/rebuild-blog/img/cover.webp"
+image = "post/2025/08/build-blog/img/cover.webp"
 license = ""
 categories = ["IT"]
 tags = ["Hugo"]
