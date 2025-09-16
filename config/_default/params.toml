@@ -23,6 +23,7 @@ src = "img/avatar.jpg"
 headingAnchor = false
 math = false
 readingTime = true
+wordCount = true
 
 [article.license]
 enabled = true
